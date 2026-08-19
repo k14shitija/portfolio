@@ -1,41 +1,45 @@
-import { useEffect, useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom'
 import { navLinks, profile } from '../data/portfolio'
 
 export default function Nav() {
-  const [active, setActive] = useState('#home')
+  const navigate = useNavigate()
+  const location = useLocation()
 
-  useEffect(() => {
-    const ids = navLinks.map((link) => link.href.slice(1))
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null)
+  const goTo = (target: string) => {
+    const scroll = () => {
+      if (target === 'home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      } else {
+        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
-        })
-      },
-      { rootMargin: '-45% 0px -50% 0px' },
-    )
-    sections.forEach((section) => observer.observe(section))
-    return () => observer.disconnect()
-  }, [])
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollTo: target === 'home' ? undefined : target } })
+      if (target === 'home') requestAnimationFrame(() => window.scrollTo({ top: 0 }))
+    } else {
+      scroll()
+    }
+  }
 
   return (
     <header className="nav">
-      <a className="nav__brand" href="#home">
+      <button
+        type="button"
+        className="nav__brand"
+        onClick={() => goTo('home')}
+      >
         {profile.brand}
-      </a>
+      </button>
       <nav className="nav__links" aria-label="Primary">
         {navLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className={active === link.href ? 'is-active' : ''}
+          <button
+            type="button"
+            key={link.target}
+            onClick={() => goTo(link.target)}
           >
             {link.label}
-          </a>
+          </button>
         ))}
       </nav>
     </header>

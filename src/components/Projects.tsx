@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { projects } from '../data/portfolio'
 
 export default function Projects() {
@@ -28,19 +29,21 @@ export default function Projects() {
 
         <div className="carousel__track" ref={trackRef}>
           {projects.map((project) => (
-            <article className="project" key={project.title}>
-              <div className="project__thumb">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  loading="lazy"
-                />
-              </div>
-              <h3 className="project__name">{project.title}</h3>
-              <p className="project__desc">{project.description}</p>
-              <a className="btn btn--dark btn--sm" href={project.link}>
+            <article className="project" key={project.slug}>
+              <Link
+                className="project__link"
+                to={`/project/${project.slug}`}
+                aria-label={`View details for ${project.title}`}
+              >
+                <div className="project__thumb">
+                  <img src={project.image} alt={project.title} loading="lazy" />
+                </div>
+                <h3 className="project__name">{project.title}</h3>
+                <p className="project__desc">{project.description}</p>
+              </Link>
+              <Link className="btn btn--dark btn--sm" to={`/project/${project.slug}`}>
                 Learn More
-              </a>
+              </Link>
             </article>
           ))}
         </div>
@@ -53,12 +56,6 @@ export default function Projects() {
         >
           &#8594;
         </button>
-      </div>
-
-      <div className="projects__footer">
-        <a className="btn btn--olive" href="#projects">
-          See All Projects
-        </a>
       </div>
     </section>
   )

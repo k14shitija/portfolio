@@ -1,16 +1,17 @@
+import { Routes, Route } from 'react-router-dom'
 import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Projects from './components/Projects'
 import Footer from './components/Footer'
+import Home from './pages/Home'
+import ProjectDetail from './pages/ProjectDetail'
 
 function App() {
   return (
     <>
       <Nav />
-      <main>
-        <Hero />
-        <Projects />
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/project/:slug" element={<ProjectDetail />} />
+      </Routes>
       <Footer />
     </>
   )

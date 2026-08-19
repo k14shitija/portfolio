@@ -10,9 +10,17 @@ export default function Hero() {
           <p className="hero__bio">{profile.intro1}</p>
           <p className="hero__bio">{profile.intro2}</p>
           <div className="hero__actions">
-            <a className="btn btn--dark" href="#projects">
+            <button
+              type="button"
+              className="btn btn--dark"
+              onClick={() =>
+                document
+                  .getElementById('projects')
+                  ?.scrollIntoView({ behavior: 'smooth' })
+              }
+            >
               My Projects
-            </a>
+            </button>
             <a
               className="btn btn--dark"
               href={profile.resumeUrl}
