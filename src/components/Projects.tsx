@@ -1,33 +1,64 @@
+import { useRef } from 'react'
 import { projects } from '../data/portfolio'
 
 export default function Projects() {
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  const scrollByCards = (direction: 1 | -1) => {
+    const track = trackRef.current
+    if (!track) return
+    const card = track.querySelector<HTMLElement>('.project')
+    const amount = card ? card.offsetWidth + 24 : track.clientWidth * 0.8
+    track.scrollBy({ left: amount * direction, behavior: 'smooth' })
+  }
+
   return (
-    <section className="section" id="work">
-      <div className="section__head">
-        <span className="section__index">02</span>
-        <h2 className="section__title">Selected work</h2>
+    <section className="projects" id="projects">
+      <h2 className="projects__title">Select Projects</h2>
+
+      <div className="carousel">
+        <button
+          type="button"
+          className="carousel__arrow carousel__arrow--prev"
+          aria-label="Previous projects"
+          onClick={() => scrollByCards(-1)}
+        >
+          &#8592;
+        </button>
+
+        <div className="carousel__track" ref={trackRef}>
+          {projects.map((project) => (
+            <article className="project" key={project.title}>
+              <div
+                className="project__thumb"
+                style={{
+                  background: `linear-gradient(135deg, ${project.gradient[0]}, ${project.gradient[1]})`,
+                }}
+              >
+                <span className="project__thumb-label">{project.label}</span>
+              </div>
+              <h3 className="project__name">{project.title}</h3>
+              <a className="btn btn--dark btn--sm" href={project.link}>
+                Learn More
+              </a>
+            </article>
+          ))}
+        </div>
+
+        <button
+          type="button"
+          className="carousel__arrow carousel__arrow--next"
+          aria-label="Next projects"
+          onClick={() => scrollByCards(1)}
+        >
+          &#8594;
+        </button>
       </div>
-      <div className="projects">
-        {projects.map((project) => (
-          <article
-            className="card"
-            key={project.title}
-            style={{ '--accent': project.accent } as React.CSSProperties}
-          >
-            <div className="card__glow" aria-hidden="true" />
-            <h3 className="card__title">{project.title}</h3>
-            <p className="card__desc">{project.description}</p>
-            <ul className="card__tags">
-              {project.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
-            <a className="card__link" href={project.link}>
-              Explore project
-              <span aria-hidden="true">→</span>
-            </a>
-          </article>
-        ))}
+
+      <div className="projects__footer">
+        <a className="btn btn--olive" href="#projects">
+          See All Projects
+        </a>
       </div>
     </section>
   )

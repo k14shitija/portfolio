@@ -1,83 +1,73 @@
 export interface Project {
   title: string
-  description: string
-  tags: string[]
+  /** Short label rendered on the placeholder thumbnail. */
+  label: string
+  /** Two-color gradient used for the placeholder thumbnail. */
+  gradient: [string, string]
   link: string
-  accent: string
-}
-
-export interface Skill {
-  category: string
-  items: string[]
 }
 
 export const profile = {
-  name: 'Kashish Shitija',
-  role: 'Software Engineer',
-  tagline: 'I build thoughtful, performant web experiences.',
-  intro:
-    'Full-stack engineer focused on clean architecture, delightful interfaces, and shipping products that people love to use. I enjoy turning ambiguous ideas into polished, reliable software.',
-  location: 'Remote · Worldwide',
-  email: 'hello@example.com',
-  socials: [
-    { label: 'GitHub', url: 'https://github.com/k14shitija' },
-    { label: 'LinkedIn', url: 'https://www.linkedin.com/' },
-    { label: 'Email', url: 'mailto:hello@example.com' },
-  ],
+  name: 'Stephanie Tsang',
+  brand: "Stephanie Tsang's Portfolio",
+  role: 'Mechanical Engineer and Product Design Engineer',
+  intro1:
+    'Hi, I’m Stephanie Tsang, a fourth (final) year undergraduate Mechanical Engineering student at Carnegie Mellon University, passionate about designing and engineering solutions that merge functionality with innovation.',
+  intro2:
+    'My academic focus includes product design and mechanical systems, along with strong hands-on experience in CAD modeling, prototyping, and engineering analysis.',
+  email: 'stsang@andrew.cmu.edu',
+  phone: '+1 (718) 973-0112',
+  resumeUrl: '#',
 }
 
-export const stats = [
-  { value: '5+', label: 'Years building' },
-  { value: '30+', label: 'Projects shipped' },
-  { value: '12', label: 'Open-source repos' },
+export const navLinks = [
+  { label: 'Home', href: '#home' },
+  { label: 'About Me', href: '#about' },
+  { label: 'My Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export const projects: Project[] = [
   {
-    title: 'Aurora Analytics',
-    description:
-      'A real-time analytics dashboard with streaming charts, custom query builder, and role-based access control.',
-    tags: ['React', 'TypeScript', 'WebSockets', 'D3'],
+    title: 'Apple - Product Design Engineering Internship',
+    label: 'Apple',
+    gradient: ['#111111', '#333333'],
     link: '#',
-    accent: '#6366f1',
   },
   {
-    title: 'Nimbus Deploy',
-    description:
-      'A zero-config deployment platform that previews every pull request in an isolated environment.',
-    tags: ['Node.js', 'Docker', 'AWS', 'CI/CD'],
+    title: '2 Meter-Tall Working Model Crane',
+    label: 'Model Crane',
+    gradient: ['#c98a2b', '#8a5a12'],
     link: '#',
-    accent: '#ec4899',
   },
   {
-    title: 'Pocket Ledger',
-    description:
-      'An offline-first personal finance app with end-to-end encryption and effortless budgeting insights.',
-    tags: ['PWA', 'IndexedDB', 'Crypto', 'Charts'],
+    title: 'Material-Efficient Acrylic Cup Holder',
+    label: 'Cup Holder',
+    gradient: ['#2e8b74', '#186a55'],
     link: '#',
-    accent: '#14b8a6',
   },
   {
-    title: 'Trailhead CMS',
-    description:
-      'A headless content platform with a block-based editor, versioning, and a typed content API.',
-    tags: ['Next.js', 'GraphQL', 'PostgreSQL'],
+    title: 'Transformable Structural Packaging for Collectibles',
+    label: 'Packaging',
+    gradient: ['#5b6bb5', '#33407e'],
     link: '#',
-    accent: '#f59e0b',
-  },
-]
-
-export const skills: Skill[] = [
-  {
-    category: 'Frontend',
-    items: ['React', 'TypeScript', 'Vite', 'Tailwind', 'Accessibility'],
   },
   {
-    category: 'Backend',
-    items: ['Node.js', 'Python', 'PostgreSQL', 'Redis', 'REST & GraphQL'],
+    title: 'Foldable Camping Chair',
+    label: 'Camping Chair',
+    gradient: ['#b5533f', '#7d3325'],
+    link: '#',
   },
   {
-    category: 'Platform',
-    items: ['Docker', 'AWS', 'CI/CD', 'Observability', 'Testing'],
+    title: 'IoT Device for Predicting Elevator Breakdowns',
+    label: 'IoT Device',
+    gradient: ['#4a5568', '#2d3340'],
+    link: '#',
+  },
+  {
+    title: 'Transport Mobot for Delivering Mini Pallets to a 3-Floor Tower',
+    label: 'Transport Mobot',
+    gradient: ['#7a6cb0', '#4b3f80'],
+    link: '#',
   },
 ]

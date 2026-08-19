@@ -1,44 +1,43 @@
 import { useEffect, useState } from 'react'
-import { profile } from '../data/portfolio'
-
-const links = [
-  { label: 'About', href: '#about' },
-  { label: 'Work', href: '#work' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
-]
+import { navLinks, profile } from '../data/portfolio'
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false)
+  const [active, setActive] = useState('#home')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const ids = navLinks.map((link) => link.href.slice(1))
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null)
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActive(`#${entry.target.id}`)
+        })
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    )
+    sections.forEach((section) => observer.observe(section))
+    return () => observer.disconnect()
   }, [])
 
-  const initials = profile.name
-    .split(' ')
-    .map((part) => part[0])
-    .join('')
-
   return (
-    <header className={`nav ${scrolled ? 'nav--scrolled' : ''}`}>
-      <a className="nav__brand" href="#top" aria-label="Home">
-        <span className="nav__mark">{initials}</span>
-        <span className="nav__name">{profile.name}</span>
+    <header className="nav">
+      <a className="nav__brand" href="#home">
+        {profile.brand}
       </a>
       <nav className="nav__links" aria-label="Primary">
-        {links.map((link) => (
-          <a key={link.href} href={link.href}>
+        {navLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className={active === link.href ? 'is-active' : ''}
+          >
             {link.label}
           </a>
         ))}
       </nav>
-      <a className="btn btn--ghost nav__cta" href="#contact">
-        Let’s talk
-      </a>
     </header>
   )
 }
