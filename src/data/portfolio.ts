@@ -32,11 +32,65 @@ export const profile = {
   resumeUrl: '/Kshitija_Kumbharkar_Resume.pdf',
 }
 
-export const navLinks = [
-  { label: 'Home', target: 'home' },
-  { label: 'About Me', target: 'about' },
-  { label: 'My Projects', target: 'projects' },
-  { label: 'Contact', target: 'contact' },
+export type NavLink =
+  | { label: string; kind: 'home' }
+  | { label: string; kind: 'scroll'; target: string }
+  | { label: string; kind: 'route'; to: string }
+
+export const navLinks: NavLink[] = [
+  { label: 'Home', kind: 'home' },
+  { label: 'About Me', kind: 'route', to: '/about' },
+  { label: 'My Projects', kind: 'scroll', target: 'projects' },
+  { label: 'Contact', kind: 'route', to: '/contact' },
+]
+
+export interface TimelineItem {
+  role: string
+  org: string
+  meta: string
+  period: string
+}
+
+export const experience: TimelineItem[] = [
+  {
+    role: 'Product Intern — Product Strategy & Platform Roadmap',
+    org: 'Porsche Engineering Services (PEUS)',
+    meta: 'Carson, CA',
+    period: 'Jun 2025 – May 2026',
+  },
+  {
+    role: 'Product Design Engineer — Systems Integration & PLM',
+    org: 'Mercedes-Benz Research & Development India',
+    meta: 'Pune, India',
+    period: 'Sep 2022 – Jul 2024',
+  },
+  {
+    role: 'Design Intern — Operations & Stakeholder Management',
+    org: 'Dassault Systèmes',
+    meta: 'Pune, India',
+    period: 'Jan 2021 – May 2021',
+  },
+  {
+    role: 'Supply Chain Intern — Process Automation & Workflow Design',
+    org: 'Cummins',
+    meta: 'Pune, India',
+    period: 'Jun 2019 – Sep 2019',
+  },
+]
+
+export const education: TimelineItem[] = [
+  {
+    role: 'M.S. Engineering Management',
+    org: 'University of Southern California — USC Viterbi',
+    meta: 'GPA 3.85',
+    period: 'May 2026',
+  },
+  {
+    role: 'B.Tech Mechanical Engineering',
+    org: 'Vishwakarma Institute of Technology, Pune',
+    meta: 'GPA 8.98/10',
+    period: 'Jul 2022',
+  },
 ]
 
 export const projects: Project[] = [
