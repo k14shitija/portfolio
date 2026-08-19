@@ -11,6 +11,10 @@ export default function Footer() {
           <a href={`tel:${profile.phone.replace(/[^+\d]/g, '')}`}>
             {profile.phone}
           </a>
+          <a href={profile.linkedin} target="_blank" rel="noreferrer">
+            {profile.linkedinLabel}
+          </a>
+          <span className="footer__location">{profile.location}</span>
         </div>
       </div>
     </footer>

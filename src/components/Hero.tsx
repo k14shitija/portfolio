@@ -23,8 +23,8 @@ export default function Hero() {
             </a>
           </div>
         </div>
-        <div className="hero__photo" role="img" aria-label={`Portrait of ${profile.name}`}>
-          <span className="hero__photo-monogram">ST</span>
+        <div className="hero__photo">
+          <img src="/img/profile.png" alt={`Portrait of ${profile.name}`} />
         </div>
       </div>
     </section>

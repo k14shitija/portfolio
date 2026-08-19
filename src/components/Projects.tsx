@@ -29,15 +29,15 @@ export default function Projects() {
         <div className="carousel__track" ref={trackRef}>
           {projects.map((project) => (
             <article className="project" key={project.title}>
-              <div
-                className="project__thumb"
-                style={{
-                  background: `linear-gradient(135deg, ${project.gradient[0]}, ${project.gradient[1]})`,
-                }}
-              >
-                <span className="project__thumb-label">{project.label}</span>
+              <div className="project__thumb">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  loading="lazy"
+                />
               </div>
               <h3 className="project__name">{project.title}</h3>
+              <p className="project__desc">{project.description}</p>
               <a className="btn btn--dark btn--sm" href={project.link}>
                 Learn More
               </a>
