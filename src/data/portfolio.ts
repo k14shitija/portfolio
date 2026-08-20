@@ -1,7 +1,10 @@
+export type ProjectCategory = 'Product' | 'Design'
+
 export interface Project {
   /** URL-safe identifier used for the detail route (/project/:slug). */
   slug: string
   title: string
+  category: ProjectCategory
   /** Short context line: org / course · timeframe. */
   context: string
   /** One-line summary shown on the project card. */
@@ -18,7 +21,7 @@ export interface Project {
 
 export const profile = {
   name: 'Kshitija Kumbharkar',
-  brand: 'Kshitija Kumbharkar',
+  brand: 'kshitijakumbharkar.com',
   role: 'Product Manager & Product Design Engineer',
   intro1:
     'Hi, I’m Kshitija Kumbharkar, an M.S. Engineering Management candidate at USC Viterbi with a mechanical and product design engineering background. I turn complex engineering and stakeholder requirements into products people actually use.',
@@ -93,10 +96,31 @@ export const education: TimelineItem[] = [
   },
 ]
 
+export const projectCategories: ProjectCategory[] = ['Product', 'Design']
+
 export const projects: Project[] = [
+  // ---------- Product ----------
+  {
+    slug: 'houston-adas',
+    title: 'Houston — ADAS Simulation Platform',
+    category: 'Product',
+    context: 'Porsche Engineering (PEUS) · Product Strategy & Roadmap · 2025–2026',
+    description:
+      'Led 0→1 development of an internal ADAS simulation platform — including its geospatial coverage module — scaling adoption from 10 to 50+ vehicles.',
+    overview:
+      'Houston is an internal ADAS (Advanced Driver-Assistance Systems) simulation platform I drove from concept to adoption as a Product Intern at Porsche Engineering. Alongside the core platform I built Houston_CC, its geospatial coverage module. I translated engineering and stakeholder requirements into a prioritized roadmap and shepherded a 12-month build.',
+    highlights: [
+      'Led 0→1 development, translating engineering and stakeholder requirements into a prioritized roadmap; scaled adoption from 10 to 50+ vehicles over a 12-month build.',
+      'Built Houston_CC, a geospatial module tracking 50,000+ km of ADAS fleet coverage with night-driving and lane-change analytics.',
+      'Cut coverage processing time from 4–5 hours to ~10 minutes and managed A2D2 coverage KPIs across two program phases.',
+    ],
+    tools: ['Product Roadmapping', 'Requirements', 'Geospatial Systems', 'Python', 'KPI Development', 'Jira', 'Confluence'],
+    image: '/img/proj_houston.png',
+  },
   {
     slug: 'daily-brief',
     title: 'The Daily Brief — Multi-Model GenAI News Summarization',
+    category: 'Product',
     context: 'USC ISE 547 · Generative AI · Apr 2026 · Team of 2',
     description:
       'A 0→1 GenAI app that summarizes the day’s news across four LLMs, with a rigorous evaluation framework comparing model quality.',
@@ -111,40 +135,62 @@ export const projects: Project[] = [
     image: '/img/proj_dailybrief.png',
   },
   {
-    slug: 'houston-adas',
-    title: 'Houston — ADAS Simulation Platform',
-    context: 'Porsche Engineering (PEUS) · Product Strategy & Roadmap · 2025–2026',
+    slug: 'calorie-capture',
+    title: 'CalorieCapture — AI Fitness Tracking App',
+    category: 'Product',
+    context: 'Product Strategy · AI / Mobile · Concept',
     description:
-      'Drove 0→1 development of an internal ADAS simulation platform, scaling adoption from 10 to 50+ vehicles over a 12-month build.',
+      'A product concept for effortless fitness tracking: one-tap AI meal-photo calorie estimation, guided workout tutorials, and gamified habits.',
     overview:
-      'Houston is an internal ADAS (Advanced Driver-Assistance Systems) simulation platform I drove from concept to adoption as a Product Intern at Porsche Engineering. I translated engineering and stakeholder requirements into a prioritized product roadmap and shepherded a 12-month build.',
+      'CalorieCapture is a mobile fitness product concept I defined end-to-end — from customer insights to a phased roadmap. Its core idea is removing friction from tracking: snap a photo of a meal for an instant AI calorie estimate, follow guided gym-machine video tutorials, and build habits through gamification.',
     highlights: [
-      'Led 0→1 development, translating engineering and stakeholder requirements into a prioritized roadmap.',
-      'Scaled adoption from 10 to 50+ vehicles over a 12-month build.',
-      'Managed A2D2 coverage KPIs across two program phases and built automation to improve engineering workflows.',
+      'Defined the product vision, feature set, and success metrics (targets: 90% daily logging, 75% 3-month retention, 95% AI accuracy).',
+      'Designed one-tap AI meal-photo calorie estimation and guided gym-machine tutorials as the hero features.',
+      'Built a phased roadmap with acceptance criteria spanning MVP through gamified habit-building.',
     ],
-    tools: ['Product Roadmapping', 'Requirements', 'KPI Development', 'Stakeholder Management', 'Jira', 'Confluence'],
-    image: '/img/proj_houston.png',
+    tools: ['Product Management', 'Product Strategy', 'Roadmapping', 'AI / Computer Vision', 'UX', 'KPIs'],
+    image: '/img/proj_calorie.png',
   },
   {
-    slug: 'houston-cc',
-    title: 'Houston_CC — Geospatial ADAS Fleet Coverage',
-    context: 'Porsche Engineering (PEUS) · Geospatial Analytics · 2025–2026',
+    slug: 'usc-housing-app',
+    title: 'USC Housing Mobile Application',
+    category: 'Product',
+    context: 'USC ISE 515 · Engineering Project Management Capstone · Spring 2025',
     description:
-      'A geospatial module tracking 50,000+ km of ADAS fleet coverage, cutting processing time from 4–5 hours to ~10 minutes.',
+      'Authored the end-to-end plan for a multi-phase USC housing app rollout and secured faculty Board of Directors approval.',
     overview:
-      'Houston_CC is a geospatial module within the Houston platform that tracks and visualizes ADAS fleet coverage across tens of thousands of kilometers, turning raw drive data into actionable coverage insights.',
+      'A project-management capstone in which I authored the end-to-end plan for a multi-phase USC housing mobile-app rollout — from charter through risk framework — and secured faculty Board of Directors approval.',
     highlights: [
-      'Built and launched a geospatial module tracking 50,000+ km of ADAS fleet coverage.',
-      'Developed analytics for night-driving and lane-change calculations.',
-      'Reduced processing time from 4–5 hours to ~10 minutes.',
+      'Developed the full project plan: charter, WBS, milestones, dependencies, resource allocation, and budget.',
+      'Built a risk-management framework using probability-impact analysis, change management, and scope controls.',
+      'Secured faculty Board of Directors approval and structured execution around defined milestones and dependencies.',
     ],
-    tools: ['Geospatial Systems', 'Python', 'Data Analytics', 'Automation'],
-    image: '/img/proj_houstoncc.png',
+    tools: ['Project Planning', 'WBS', 'Risk Analysis', 'Budgeting', 'Change Management'],
+    image: '/img/proj_housing.png',
+  },
+
+  // ---------- Design ----------
+  {
+    slug: 'fsae-suspension',
+    title: 'FSAE Race Car Suspension & Steering',
+    category: 'Design',
+    context: 'Dassault Systèmes Internship · 3DEXPERIENCE · Vehicle Dynamics',
+    description:
+      'Designed a complete double-wishbone suspension and rack-and-pinion steering system for a Formula Student race car on the 3DEXPERIENCE platform.',
+    overview:
+      'During my internship at Dassault Systèmes, I designed a full double-wishbone suspension and rack-and-pinion steering system for a Formula Student (FSAE) race car per 2022 rules, using the 3DEXPERIENCE platform. I iterated the geometry in Catia Dymola, selected shock absorbers, computed spring stiffness, and modeled the complete CAD assembly — work that also produced a published research paper.',
+    highlights: [
+      'Designed double-wishbone suspension + rack-and-pinion steering to FSAE 2022 rules, fully modeled in CATIA / 3DEXPERIENCE.',
+      'Optimized geometry: 82 mm front / 145 mm rear roll centre, 200 lbs/in springs, 1.60 / 1.67 motion ratios, 62% Ackermann, 2.9 m turning radius.',
+      'Validated hand calculations against Catia Dymola behavior models across design iterations.',
+    ],
+    tools: ['CATIA', '3DEXPERIENCE', 'Catia Dymola', 'Vehicle Dynamics', 'Suspension Design', 'Modelica'],
+    image: '/img/proj_fsae.png',
   },
   {
     slug: 'ev-wiring-harness',
     title: 'EV Wiring Harness Design',
+    category: 'Design',
     context: 'Mercedes-Benz R&D India · Systems Integration & PLM · 2022–2024',
     description:
       'Led wiring-harness design for an EV supplier program across the full product lifecycle, improving design-data accuracy by 20%.',
@@ -159,36 +205,38 @@ export const projects: Project[] = [
     image: '/img/proj_harness.png',
   },
   {
-    slug: 'usc-housing-app',
-    title: 'USC Housing Mobile Application',
-    context: 'USC ISE 515 · Engineering Project Management Capstone · Spring 2025',
+    slug: 'kaplan-turbine',
+    title: 'Kaplan Turbine Design & CFD',
+    category: 'Design',
+    context: 'Mechanical Engineering Project · SolidWorks + CFD',
     description:
-      'Authored the end-to-end plan for a multi-phase USC housing app rollout and secured faculty Board of Directors approval.',
+      'Designed a low-head Kaplan hydro turbine (~1 MW target) with full CAD modeling, CFD flow simulation, and structural analysis.',
     overview:
-      'A project-management capstone in which I authored the end-to-end plan for a multi-phase USC housing mobile-app rollout — from charter through risk framework — and secured faculty Board of Directors approval.',
+      'A final-year mechanical engineering project designing a low-head Kaplan turbine for hydropower (5 m head, 25 m³/s, ~1 MW target). I sized the runner and components from first principles, modeled the casing, runner, and draft tube in SolidWorks, and ran CFD and static-structural analysis.',
     highlights: [
-      'Developed the full project plan: charter, WBS, milestones, dependencies, resource allocation, and budget.',
-      'Built a risk-management framework using probability-impact analysis, change management, and scope controls.',
-      'Secured faculty Board of Directors approval and structured execution around defined milestones and dependencies.',
+      'Designed a 4-blade runner (Ø2.34 m, hub Ø0.94 m) at 161.7 rpm, specific speed 710.',
+      'Modeled casing, runner, and draft tube in SolidWorks and simulated flow with CFD.',
+      'Computed axial force of 26,560 N (resultant 26,262 N) and completed static-structural analysis.',
     ],
-    tools: ['Project Planning', 'WBS', 'Risk Analysis', 'Budgeting', 'Change Management'],
-    image: '/img/proj_housing.png',
+    tools: ['SolidWorks', 'CFD', 'FEA / Structural', 'Turbomachinery', 'Hydraulic Machines'],
+    image: '/img/proj_kaplan.png',
   },
   {
-    slug: 'bluetooth-speaker',
-    title: 'Bluetooth Speaker — AI-Powered Bathroom Audio',
-    context: 'B.Tech Capstone · Product Design · VIT Pune',
+    slug: 'two-hand-safety',
+    title: 'Two-Hand Safety System — Engine Assembly Line',
+    category: 'Design',
+    context: 'Cummins Internship · Manufacturing & Process Safety',
     description:
-      'A compact, hands-free Bluetooth speaker for the bathroom, combining enclosure design with a voice-controlled, AI-driven experience.',
+      'Implemented a two-hand safety control on the NHNT engine assembly line and designed automated line solutions with inventory controls.',
     overview:
-      'My undergraduate capstone: a compact, hands-free Bluetooth speaker designed for the bathroom, combining consumer-electronics enclosure design with a voice-controlled, AI-driven music experience.',
+      'As a process / supply-chain intern at Cummins, I implemented a two-hand safety mechanism on the NHNT engine assembly line — requiring both operator hands on separated buttons before the machine actuates, protecting operators from injury. I also designed automated assembly-line solutions and min-max inventory controls to improve line efficiency.',
     highlights: [
-      'Designed a compact enclosure around an audio PCB with USB-A, micro-USB, and 3.5 mm interfaces, aligning ports to PCB datums via tolerance stack-up analysis.',
-      'Developed retention bosses, mounting features, and enclosure interfaces in SolidWorks for prototype builds.',
-      'Conceptualized a hands-free experience combining voice control and AI-driven music personalization.',
+      'Implemented two-hand safety controls on the NHNT engine assembly line to protect operators during machine actuation.',
+      'Designed automated assembly-line solutions and introduced min-max inventory controls, improving operational efficiency by 25%.',
+      'Adjusted replenishment parameters across facilities, reducing stockouts/overstock by 20% and holding costs by 10%.',
     ],
-    tools: ['SolidWorks', 'Tolerance Stack-up', 'Enclosure Design', 'Prototyping'],
-    image: '/img/proj_speaker.png',
+    tools: ['Manufacturing Process', 'Assembly Automation', 'Poka-Yoke / Safety', 'Min-Max Inventory', 'Process Improvement'],
+    image: '/img/proj_cummins.png',
   },
 ]
 

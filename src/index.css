@@ -273,6 +273,43 @@ h4 {
   color: var(--ink-soft);
 }
 
+/* Category groups (Product / Design) */
+.project-category {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 5vw, 4rem);
+}
+.project-category + .project-category {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+.project-category__label {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid #e6e6e2;
+}
+.project-category__count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--olive);
+  border-radius: 999px;
+  padding: 0.12rem 0.6rem;
+  line-height: 1.6;
+}
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: clamp(1.2rem, 3vw, 1.8rem);
+}
+.project-grid .project {
+  flex: initial;
+}
+
 .projects__footer {
   max-width: var(--max);
   margin: clamp(1.5rem, 4vw, 3rem) auto 0;
