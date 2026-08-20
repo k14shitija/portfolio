@@ -1,6 +1,7 @@
 {
   "name": "portfolio",
   "install": "npm ci",
+  "ports": [5173],
   "terminals": [
     {
       "name": "dev",
