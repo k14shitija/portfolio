@@ -119,6 +119,10 @@ export default function Contact() {
                 <a href={`mailto:${profile.email}`}>{profile.email}</a>
               </li>
               <li>
+                <span>Email (USC)</span>
+                <a href={`mailto:${profile.emailUsc}`}>{profile.emailUsc}</a>
+              </li>
+              <li>
                 <span>Phone</span>
                 <a href={`tel:${profile.phone.replace(/[^+\d]/g, '')}`}>
                   {profile.phone}

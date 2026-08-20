@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { projectCategories, projects } from '../data/portfolio'
+import { asset, projectCategories, projects } from '../data/portfolio'
 
 export default function Projects() {
   return (
@@ -24,7 +24,7 @@ export default function Projects() {
                     aria-label={`View details for ${project.title}`}
                   >
                     <div className="project__thumb">
-                      <img src={project.image} alt={project.title} loading="lazy" />
+                      <img src={asset(project.image)} alt={project.title} loading="lazy" />
                     </div>
                     <h4 className="project__name">{project.title}</h4>
                     <p className="project__desc">{project.description}</p>

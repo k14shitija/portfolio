@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { getProject, projects } from '../data/portfolio'
+import { asset, getProject, projects } from '../data/portfolio'
 
 export default function ProjectDetail() {
   const { slug } = useParams()
@@ -46,7 +46,7 @@ export default function ProjectDetail() {
         <p className="detail__overview">{project.overview}</p>
 
         <div className="detail__media">
-          <img src={project.image} alt={project.title} />
+          <img src={asset(project.image)} alt={project.title} />
         </div>
 
         <div className="detail__grid">

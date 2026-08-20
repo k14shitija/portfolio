@@ -22,17 +22,30 @@ export interface Project {
 export const profile = {
   name: 'Kshitija Kumbharkar',
   brand: 'kshitijakumbharkar.com',
+  siteTitle: "Kshitija Kumbharkar's Portfolio",
   role: 'Product Manager & Product Design Engineer',
   intro1:
     'Hi, I’m Kshitija Kumbharkar, an M.S. Engineering Management candidate at USC Viterbi with a mechanical and product design engineering background. I turn complex engineering and stakeholder requirements into products people actually use.',
   intro2:
     'I’ve led 0→1 platform development at Porsche Engineering, wiring-harness and systems integration at Mercedes-Benz R&D, and shipped GenAI applications — working across hardware, software, and product strategy.',
   location: 'Los Angeles, CA',
-  email: 'kumbhark@usc.edu',
+  /** Primary contact email (contact form destination). */
+  email: 'kumbharkarkshitija14@gmail.com',
+  /** Secondary / academic email. */
+  emailUsc: 'kumbhark@usc.edu',
   phone: '+1 (213) 245-5814',
   linkedin: 'https://www.linkedin.com/in/kshitija-kumbharkar',
   linkedinLabel: 'linkedin.com/in/kshitija-kumbharkar',
   resumeUrl: '/Kshitija_Kumbharkar_Resume.pdf',
+}
+
+/**
+ * Resolve a public asset path against Vite's BASE_URL so it works both at the
+ * site root (local/static preview) and under a subpath (GitHub Pages project site).
+ */
+export function asset(path: string): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '')
+  return `${base}/${path.replace(/^\//, '')}`
 }
 
 export type NavLink =

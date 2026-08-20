@@ -1,4 +1,4 @@
-import { profile } from '../data/portfolio'
+import { asset, profile } from '../data/portfolio'
 
 export default function Hero() {
   return (
@@ -23,7 +23,7 @@ export default function Hero() {
             </button>
             <a
               className="btn btn--dark"
-              href={profile.resumeUrl}
+              href={asset(profile.resumeUrl)}
               target="_blank"
               rel="noreferrer"
             >
@@ -32,7 +32,7 @@ export default function Hero() {
           </div>
         </div>
         <div className="hero__photo">
-          <img src="/img/profile.png" alt={`Portrait of ${profile.name}`} />
+          <img src={asset('/img/profile.png')} alt={`Portrait of ${profile.name}`} />
         </div>
       </div>
     </section>

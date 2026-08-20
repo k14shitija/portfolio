@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { education, experience, profile } from '../data/portfolio'
+import { asset, education, experience, profile } from '../data/portfolio'
 
 export default function About() {
   useEffect(() => {
@@ -51,7 +51,7 @@ export default function About() {
           </div>
 
           <div className="about__photo">
-            <img src="/img/profile.png" alt={`Portrait of ${profile.name}`} />
+            <img src={asset('/img/profile.png')} alt={`Portrait of ${profile.name}`} />
           </div>
         </div>
 
